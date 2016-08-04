@@ -67,10 +67,11 @@ div {
         $('#location').append($('<option/>').attr("value", option.name).text(option.name));
     });
     $("#location").append($('<option/>').attr("value", "other").attr("id", "otherOption").text("Other"));
-  });
-  $("#otherOption").click(function(event) {
-    $('<br /><label for="otherSpec">Specify</label><br />'+
-      '<input name="otherSpec" id="otherSpec" />').insertAfter("#location");
+    $("#otherOption").click(function(event) {
+      console.log('other');
+      $('<br /><label for="otherSpec">Specify</label><br />'+
+        '<input name="otherSpec" id="otherSpec" />').insertAfter("#location");
+    });
   });
 </script>
 </body>

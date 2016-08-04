@@ -43,5 +43,5 @@ if __name__ == "__main__":
     ],
         static_path=os.path.join(os.path.dirname('.'), "static")
     )
-    app.listen(80)
+    app.listen(8000)
     tornado.ioloop.IOLoop.current().start()
