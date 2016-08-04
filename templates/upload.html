@@ -68,9 +68,8 @@ div {
     });
     $("#location").append($('<option/>').attr("value", "other").attr("id", "otherOption").text("Other"));
     $("#otherOption").click(function(event) {
-      console.log('other');
-      $('<br /><label for="otherSpec">Specify</label><br />'+
-        '<input name="otherSpec" id="otherSpec" />').insertAfter("#location");
+      $("#location").after('<br /><label for="otherSpec">Specify</label><br />'+
+        '<input name="otherSpec" id="otherSpec" />');
     });
   });
 </script>

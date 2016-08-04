@@ -25,6 +25,7 @@ var locations = [
 {"name":"Mumbai Naka"},
 {"name":"Tidke Colony"},
 {"name":"Thakkar Bazar"},
+{"name": "Ashoka Marg"},
 {"name":"Ganjmal"},
 {"name":"CBS"},
 {"name":"Gangapur Road"},
