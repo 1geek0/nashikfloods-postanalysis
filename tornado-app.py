@@ -2,7 +2,9 @@ import os
 from libfloods.locations import checkPath, filecount
 import tornado.ioloop
 import tornado.web
-
+from libfloods.mongo import db
+from libfloods.io import saveFiles
+import time
 
 class UploadHandler(tornado.web.RequestHandler):
     @tornado.web.asynchronous
@@ -10,22 +12,24 @@ class UploadHandler(tornado.web.RequestHandler):
         self.render("templates/upload.html")
 
     def post(self):
-        file1 = self.request.files['file1'][0]
-        original_fname = file1['filename']
         location = self.get_argument('location')
+        if location == "other":
+            location = self.get_argument('other')
         name = self.get_argument('name')
         contact = self.get_argument('contact')
         email = self.get_argument('email')
-        other = self.get_argument('other', '')
 
-        path = "../floodimages/" + location + '/'
-        checkPath(path)
-        filec = filecount(path)
-        output_file = open(path + str(filec+1) + original_fname[-4:], 'wb')
-        output_file.write(file1['body'])
+        file_range = saveFiles(self, location)
+        db.submissions.insert({
+            'name': name,
+            'contact': contact,
+            'email': email,
+            'location': location,
+            'timeSubmitted': time.time(),
+            'fileRange': file_range
+        })
 
         self.render('templates/thankyou.html')
-
 
 settings = {
     'static_path': os.path.join(os.path.dirname(__file__), "static")
