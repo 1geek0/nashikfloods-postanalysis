@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Upload Flood Photos</title>
+</head>
+
+<body>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+<style>
+
+{ margin: 0; padding: 0; }
+
+html {
+        background: url('http://images.indianexpress.com/2016/07/nashik-rain-759.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+div {
+    width: 800px;
+    height: 200px;
+    position: relative;
+    top:40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+</style>
+
+
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <script src="/static/js/locations.js"></script>
+  <div>
+
+
+    <p><h1>Upload Nashik Flood Photos</h1></p>
+    <form enctype="multipart/form-data" action="/" method="post" id="floodform">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name"/><br />
+      <!-- <input type="text" name="location" id="location" /><br /> -->
+      <label for="contact">Mobile no. (optional)</label>
+      <input type="text" name="contact" id="contact"/><br />
+      <label for="email">Email (So that we can thank you <i class="em em-smile"></i>)</label>
+      <input type="text" name="email" id="email"/><br />
+      <label for="files">Photo(s)</label>
+      <input type="file" name="file1" id="files" multiple><br />
+      <label for="location">Location Of Photo(s)</label>
+      <select width="50px" form="floodform" required="true" id="location" name="location"></select><br />
+      <br />
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+</div>
+<script>
+  $(function(){
+    $.each(locations, function(i, option) {
+        $('#location').append($('<option/>').attr("value", option.name).text(option.name));
+    });
+    $("#location").append($('<option/>').attr("value", "other").attr("id", "otherOption").text("Other"));
+  });
+  $("#otherOption").click(function(event) {
+    $('<br /><label for="otherSpec">Specify</label><br />'+
+      '<input name="otherSpec" id="otherSpec" />').insertAfter("#location");
+  });
+</script>
+</body>
+</html>
