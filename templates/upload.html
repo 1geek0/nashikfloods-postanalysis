@@ -58,7 +58,7 @@ div {
       <select width="50px" form="floodform" required="true" id="location" name="location"></select><br />
       <br />
       <br />
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" id="submit"/>
     </form>
 </div>
 <script>
@@ -71,6 +71,10 @@ div {
       $("#location").after('<br /><label for="otherSpec">Specify</label><br />'+
         '<input name="otherSpec" id="otherSpec" />');
     });
+  });
+  $("#submit").click(function(event) {
+    /* Act on the event */
+    $("#submit").after("<h4>Files Uploading, Please Do Not Close This Window, Do Not Refresh Or Put The Browser In Background</h4>")
   });
 </script>
 </body>
