@@ -70,4 +70,5 @@ def checkPath(path):
 
 
 def filecount(dir_name):
-    return len([f for f in os.listdir(dir_name) if os.path.isfile(f)])
+    # return len([f for f in os.listdir(dir_name) if os.path.isfile(f)])
+    return len(os.listdir(dir_name))
