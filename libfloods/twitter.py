@@ -18,8 +18,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 def tweetPhoto(location, photoPath):
     home = os.path.expanduser("~")
     photoPath = home + photoPath
-    tweetString = location
+    tweetString = location + " %23NashikFloods %23NashikRains"
     print("Tweet" + photoPath)
-    file1 = open(photoPath)
     api.update_with_media(photoPath, status=tweetString)
     pass
