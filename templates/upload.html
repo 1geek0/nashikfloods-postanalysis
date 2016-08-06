@@ -55,7 +55,12 @@ div {
       <label for="files">Photo(s)</label>
       <input type="file" name="file1" id="files" multiple><br />
       <label for="location">Location Of Photo(s)</label>
-      <select width="50px" form="floodform" required="true" id="location" name="location"></select><br />
+      <!-- <select width="50px" form="floodform" required="true" id="location" name="location"></select><br /> -->
+      <input type="text" name="location" required="true" id="location"><br  />
+      <label for="desc">Description(Optional)</label>
+      <input type="text" name="desc" id="desc"><br />
+      <label for="time">Time Of Photo Click</label>
+      <input type="text" name="time" id="time"><br />
       <br />
       <br />
       <input type="submit" value="Submit" id="submit"/>
