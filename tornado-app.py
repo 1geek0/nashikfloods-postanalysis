@@ -22,7 +22,6 @@ class UploadHandler(tornado.web.RequestHandler):
         contact = self.get_argument('contact')
         email = self.get_argument('email')
         description = self.get_argument('desc')
-        timeClicked = self.get_argument('time')
 
         file_range = saveFiles(self, location)
         db.submissions.insert({
@@ -31,14 +30,13 @@ class UploadHandler(tornado.web.RequestHandler):
             'email': email,
             'location': location,
             'timeSubmitted': time.time(),
-            'timeClicked': timeClicked,
             'description': description,
             'fileRange': file_range
         })
         fileList = os.listdir("../floodimages/" + location + '/')
         for file in fileList:
             if file.startswith(str(min(file_range))):
-                tweetPhoto(location, time=timeClicked, photoPath="../floodimages/" + location + '/' + file)
+                tweetPhoto(location, photoPath="/floodimages/" + location + '/' + file)
         self.render('templates/thankyou.html')
 
 

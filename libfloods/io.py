@@ -1,5 +1,6 @@
 from libfloods.locations import checkPath, filecount
-
+import exifread
+import os
 
 # Save the list of files given
 def saveFiles(request, location):
@@ -8,7 +9,7 @@ def saveFiles(request, location):
     while x < len(request.request.files['file1']):
         file = request.request.files['file1'][x]
         original_fname = file['filename']
-        path = "../floodimages/" + location + '/'
+        path = os.path.expanduser("~") + "/floodimages/" + location + '/'
         checkPath(path)
         filec = filecount(path)
         output_file = open(path + str(filec + 1) + original_fname[-4:], 'wb')
