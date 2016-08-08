@@ -55,6 +55,8 @@ div {
       <label for="files">Photo(s)</label>
       <input type="file" name="file1" id="files" multiple><br />
       <label for="location">Location Of Photo(s)</label>
+      <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+
       <select width="50px" form="floodform" required="true" id="location" name="location"></select><br />
       <br />
       <br />
@@ -77,5 +79,8 @@ div {
     $("#submit").after("<h4>Files Uploading, Please Do Not Close This Window, Do Not Refresh Or Put The Browser In Background</h4>")
   });
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_QhDJMvkgz7L58AY-zWJItEbvc7KBaqo&libraries=places&callback=initMap"
+        async defer></script>
+
 </body>
 </html>
